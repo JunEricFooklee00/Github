@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EMS</title>
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="./CSS/loginpage.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+    </head>
+    <body>
+         <div class="container-md"> 
+            <nav>
+                <h1>Employee Management System</h1>
+                <div class="menu">
+                    <ul><li>
+                        <a href="#home">Home</a>
+                        <a href="#careers">Careers</a>
+                        <a href="#service">Service</a>
+                        <a href="#aboutus">AboutUs</a>
+                    </li></ul>
+                </div>
+                <div class="todo">
+                    <ul><li>
+                         <a href="/signuppage"><button class="button" id="href">create an account?</button></a>
+                    </li></ul>
+                </div>
+        
+        <div class="container-login">
+
+            <h3>Log In</h3>
+
+            <form id="form1" onsubmit="submitForm(event)">
+                <div class="form">
+                    <i class='bx bx-user'></i>
+                    <input type="text" class="name" name="name" placeholder="Username/Email" value="{{input.name}}">
+                    <i class='bx bx-lock' style="margin-top: 10px;"></i>
+                    <input type="text" class="password" name="password" placeholder="Password" value="{{input.password}}">
+                    <div id="error"></div>
+
+                    <button type="submit">Log In</button>
+                </div>   
+            </form>
+        </div>
+    </div>
+
+        <script>
+            const error = document.getElementById("error")
+            
+            function submitForm(event) {
+                event.preventDefault();
+                const form = event.target;
+                const name = form.name.value;
+                const password = form.password.value;
+
+                fetch("/loginpage", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name, password })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.success){
+                        window.history.pushState({}, null, "homepage")
+                        window.location.href = "homepage"
+                    } else{
+                        error.innerText = data.error
+                        alert("Login Failed")
+                    }
+                })
+                .catch(err => {
+                    console.error(err)
+                    alert("Login Failed")
+                })
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta charset="utf-8">
+        <header name="{{token}}"></header>
+        <title>EMS</title>
+        {{!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> --}}
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="../CSS/homepage.css">
+    </head>
+   <body>
+
+          <div class="container-md"> 
+            <div class = "header">
+            <nav>
+                <h1>Employee Management System</h1>
+                <div class="menu">
+                    <ul><li>
+                        <a href="#home">Home</a>
+                        <a href="#careers">Careers</a>
+                        <a href="#service">Service</a>
+                        <a href="#aboutus">AboutUs</a>
+                    </li></ul>
+                </div>
+
+                <div class="todo">
+                    <ul><li>
+                        <button class="button" onclick="interfaceGOTO()" style="cursor: pointer;">Go to My Interface</button>
+                    </li></ul>
+                </div>
+
+            {{!-- <div class="w3-container w3-center">
+                <h1>Your home is secured</h1>
+
+            </div> --}}
+
+        <script src="/JS/portalpage.js"></script>
+
+        <script>
+            function interfaceGOTO() {
+                fetch("/interface", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.success) {
+                        console.log(data.user)
+                        if(data.user == "Admin"){
+                             window.location.href = "AdminInterface"
+                        }
+                        else if(data.user == "Employee"){
+                             window.location.href = "EmployeeInterface"
+                        }
+                        else{
+                            window.location.href = "ClientInterface"
+                        }
+                    }
+                    else alert("Failed to go in your Interface")
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("Failed to go in your Interface")
+                });
+            }
+        </script>
+
+    </body>
+</html>
+

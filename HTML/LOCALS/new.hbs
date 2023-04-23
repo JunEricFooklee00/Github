@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="./CSS/new.css">
+      <title>EMS</title>
+  </head>
+
+  <body>
+    <header id="new">
+      <nav>
+        <div class="menu">
+          <ul>
+            <a href="#new">Home</a>
+            <a href="#about">About</a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>PopUp LOGIN</h1>
+      <a href="#" class="button" id="button">LogIn</a>
+    </div>
+
+    <div class="popup">
+      <div class="popup-content">
+        <img src="../LOCALS/close-button.png" width="30" height="30" alt="Close" class="close">
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <a href="#" class="button">LogIn</a>
+      </div>
+
+    </div>
+
+    <script>
+      document.getElementById("button").addEventListener("click", function(){
+        document.querySelector(".popup").style.display = "flex";
+      })
+      
+      document.querySelector(".close").addEventListener("click", function(){
+        document.querySelector(".popup").style.display = "none";
+      })
+    </script>
+  </body>
+</html>

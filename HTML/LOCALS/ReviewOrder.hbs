@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>EMS</title>
+    <script src="https://kit.fontawesome.com/3913d1359b.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../CSS/hehe.png">
+    <link rel="stylesheet" href="./CSS/ClientInterface.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/ClientInterface" class="logo">
+                    <img src="../CSS/emslogo.gif" alt="">
+                    <span class = "nav-item"> EMS</span>
+                </a>
+            </li>
+        <li><a href="/ClientInterface">
+            <i class="fa-sharp fa-solid fa-house"></i>
+            <span class="nav-item">Home</span>
+        </a> </li>
+            <li><a><form action="JobOrderLink" method="post">
+            <input type="hidden" name="name" value="{{user.name}}">
+            <input type="hidden" name="id" value="{{user.id}}">
+          <button type="submit" class="btn"> 
+                    <i class="fa-sharp fa-solid fa-briefcase"></i>
+                    <span class="nav-item"> Job Order </span>
+               </li></a> 
+        </button>
+        </form>
+        <li><a href="/OrderedList">
+            <i class="fa-solid fa-book"></i>
+            <span class="nav-item"> Ordered List</span>
+          </a></li>
+          <li><a href="/RecommendedWorker">
+            <i class="fa-solid fa-address-card"></i>
+            <span class="nav-item">Recommended Worker</span>
+          </a></li>
+             <li><a href="/ClientSettings">
+             <i class="fa-sharp fa-solid fa-gear"></i>
+             <span class="nav-item">Settings</span>
+         </a></li>
+           </a></li>
+             <li><a href="#" class="logout">
+             <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+             <span class="nav-item">Log out</span>
+         </a></li>
+        </ul>
+    </nav>
+</body>
+</html>

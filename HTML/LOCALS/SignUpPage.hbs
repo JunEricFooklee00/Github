@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Document</title>
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="./CSS/signuppage.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+    </head>
+ 
+    <body>
+        <div class="container-md"> 
+            <div class = "header">
+            <nav>
+                <h1>Employee Management System</h1>
+                <div class="menu">
+                    <ul><li>
+                        <a href="#home">Home</a>
+                        <a href="#careers">Careers</a>
+                        <a href="#service">Service</a>
+                        <a href="#aboutus">AboutUs</a>
+                    </li></ul>
+                </div>
+                 <div class="todo">
+                    <ul><li>
+                        <a href="/loginpage"><button class="button" id="href">Already have an account?</button></a>
+                    </li></ul>
+                </div>
+            </div>
+            
+        
+        <div class="container-signup">
+            
+            <div class="step-row">
+                <div id="progress"></div>
+                <div class="step-col"><small>Step 1</small></div>
+                <div class="step-col"><small>Step 2</small></div>
+                <div class="step-col"><small>Step 3</small></div>
+                <div class="step-col"><small>Step 4</small></div>
+            </div> 
+
+            <h3>Sign Up</h3>
+
+            <form id="overall" action="/signuppage" method="post" enctype="multipart/form-data">
+
+                <div class="form" id="form1">
+            
+                    <div class="form-usertype">
+                        <select name="user" id ="user" class="user" value="{{data1.user}}" oninput="checkUser()">
+                            <option selected disabled hidden>Choose User Type</option>
+                            <option value="Client">Client</option>
+                            <option value="Employee">Employee</option>
+                        </select>
+                    </div>
+                    
+                    <input type="text" class="name" name="name" placeholder="Ex: FirstName MI. LastName" oninput="checkName()" size="30" value="{{data1.name}}">
+                    <span class="error name-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="text" class="email" name="email" placeholder="example@example.com" oninput="checkEmail()" size="30" value="{{data1.email}}">
+                    <span class="error email-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+                    
+                    <input type="text" class="username" name="username" placeholder="Username" oninput="checkUsername()" size="30" value="{{data1.username}}">
+                    <span class="error username-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="password" class="password" id="password" name="password" placeholder="Password" oninput="checkPassword()" size="30" value="{{data1.password}}">
+                    <span class="error password-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span> <i class="bx bx-hide" id="hide1"></i><i class="bx bx-show" id="show1"></i> <p class="error-text">This field is required</p>
+
+                    <input type="password" class="confPass" id="confPass" name="confPass" placeholder="Confirm Password" oninput="checkConfPass()" size="30" value="{{data1.confPass}}">
+                    <span class="error confPass-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                    </span><i class="bx bx-hide" id="hide2"></i><i class="bx bx-show" id="show2"></i> <p class="error-text">This field is required</p>
+
+                    <div class="btn-box">
+                        <button type="button" id="Next1">Next</button>
+                    </div>
+                </div>
+
+                <div class="form" id="form2" autocomplete="on">
+                
+                    <div class="form-bday">
+                        <h1 for="birthday" style="font-size: 12px; display: flex; font-weight: normal;">Birthday:</h1>
+                        <input style="margin-top: 0px; text-align: center;" type="date" id="birthday" class="birthday" oninput="checkBDay()" name="birthday" max="2023-12-31" value="{{data1.birthday}}"> 
+                    </div>
+
+                    <div class="form-gender">
+                        <h1 style="font-size: 12px; margin-top: -16px; display: flex; font-weight: normal;">Gender:</h1> 
+                        <div class="form-radiobutton">
+                            <input type="radio" id="Male" class="gender" oninput="checkGender()" name="gender" value="Male">
+                            <label style="font-size: 15px" for="Male">
+                                <span>Male</span>
+                            </label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" id="Female" class="gender" oninput="checkGender()" name="gender" value="Female">
+                            <label style="font-size: 15px; left: 110px;" for="Female">
+                                <span>Female</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <input type="number" class="contactNumber" name="contactNumber" placeholder="Contact Number" oninput="checkContNum()" size="20"  maxlength = "11" value="{{data1.contactNumber}}"> 
+                    <span class="error contactnumber-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="text" class="address1" name="address1" placeholder="House number & lot number" oninput="checkAdd1()" size="35" value="{{data1.address1}}">
+                    <span class="error address1-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="text" class="address2" name="address2" placeholder="Barangay" oninput="checkAdd2()" size="35" value="{{data1.address2}}" style="width: 49.4%">
+                    <span class="error address2-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="text" class="address3" name="address3" placeholder="City" oninput="checkAdd3()" size="35" value="{{data1.address3}}" style="width: 49.4%">
+                    <span class="error address3-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="text" class="address4" name="address4" placeholder="Province" oninput="checkAdd4()" size="35" value="{{data1.address4}}" style="width: 49.4%">
+                    <span class="error address4-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <input type="number" class="zipcode" name="zipcode" placeholder="Zip Code" oninput="checkZip()" size="4" maxlength="4" value="{{data1.zipcode}}" style="width: 49.4%" >
+                    <span class="error zipcode-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    </span> <p class="error-text">This field is required</p>
+
+                    <div class="btn-box">
+                        <button type="button" id="Back1">Back</button>
+                        <button type="button" id="Next2">Next</button>
+                    </div>
+                </div>
+
+                <div class="form" id="form3">
+                    <label for="images"> Resume </label>
+                        <input type="file" name="images" > <br><br>
+                    <label for="image"> Picture </label>
+                        <input type="file" name="image" > <br><br>
+
+                    <div class="btn-box">
+                        <button type="button" id="Back2">Back</button>
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+                <form id="form4">
+                    <p>Success</p>
+                    <div class="btn-box">
+                        <button type="button" id="Back3">Back</button>
+                        <button><input type="button"></button>
+                    </div>
+                </form>
+            </div>
+  </div>
+        <script src="/JS/signuppage.js"></script>
+    </body>
+</html>

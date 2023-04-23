@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EMS</title>
+    <script src="https://kit.fontawesome.com/3913d1359b.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../CSS/hehe.png">
+    <link rel="stylesheet" href="./CSS/AdminInterface.css">
+</head>
+<body>
+    {{!-- <nav>
+        <ul>
+            <li>
+                <a href="#" class="logo">
+                    <img src="../CSS/emslogo.gif" alt="">
+                    <span class = "nav-item"> WELCOME </span>
+                </a>
+            </li>
+         <li><a href="/AdminInterface">
+            <i class="fa-sharp fa-solid fa-house"></i>
+            <span class="nav-item">Home</span>
+         </a></li>
+         <li><a href="/ClientDatabase">
+            <i class="fa-sharp fa-solid fa-user"></i>
+            <span class="nav-item">Clients</span>
+         </a></li>
+             <li><a href="/EmployeeDatabase">
+            <i class="fa-sharp fa-solid fa-user"></i>
+            <span class="nav-item">Employees</span>
+         </a></li>
+            <li><a href="/Joblist">
+            <i class="fa-sharp fa-solid fa-briefcase"></i>
+            <span class="nav-item">Job List</span>
+          </a></li>
+             <li><a href="/Scheduling">
+             <i class="fa-sharp fa-solid fa-calendar-days"></i>
+             <span class="nav-item">Scheduling</span>
+         </a></li>
+           </a></li>
+             <li><a href="#">
+             <i class="fa-sharp fa-solid fa-gear"></i>
+             <span class="nav-item">Settings</span>
+         </a></li>
+           </a></li>
+             <li><a href="/logout" class="logout">
+             <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+             <span class="nav-item">Log out</span>
+         </a></li>
+        </ul>
+    </nav> --}}
+        <div class="Form-Container">
+            <form action="/Scheduling" method="post">
+
+                <b style ="font-size: 15px"> Name of Worker: </b>
+                <input type="text" id="title" name="title"><br>
+
+                <b style ="font-size: 15px"> Start Date: </b>
+                <input type="date" id="start_date" name="start_date"><br>
+
+                 <b style ="font-size: 15px"> End Date: </b>
+                <input  type="date" name="end_date"><br>
+
+                 <b style ="font-size: 15px"> Location: </b>
+                <input type="text" id="location" name="location"><br>
+
+                 <b style ="font-size: 15px"> Employee Name: </b>
+                <input type="text" id="attendees" name="attendees"><br>
+
+                <button type="submit" style="font-size: 15px">Create Schedule</button>
+            </form>
+        </div>
+</body>
+</html>

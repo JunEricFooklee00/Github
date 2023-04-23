@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EMS</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="./CSS/Joblist.css">
+    </head>
+
+    <body>
+      <div class="container">
+            <aside>
+                <div class="top">
+                    <div class="logo">
+                        <img src="https://cdn.discordapp.com/attachments/1075714300020269127/1075714382060847184/emslogo.gif">
+                        <h2 >EMS </h2>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="sidebar">
+                    <a href="/AdminInterface">
+                        <span class="material-symbols-sharp">dashboard</span>
+                        <h3> Dashboard</h3>
+                    </a >
+                    <a href="/Schedule">
+                        <span class="material-symbols-sharp">calendar_month</span>
+                        <h3>Schedule</h3>
+                    </a>
+                    <a href="/JobsPending " class="active">
+                        <span class="material-symbols-sharp">calendar_month</span>
+                        <h3>Jobs Pending</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-sharp">construction</span>
+                        <h3>Projects</h3>
+                    </a>
+                    <a href="/employeesDB">
+                        <span class="material-symbols-sharp">engineering</span>
+                        <h3>Employees' Database</h3>
+                    </a>
+                    <a href="/clientsDB">
+                        <span class="material-symbols-sharp">groups</span>
+                        <h3>Clients' Database</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-sharp">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a href="#" onclick="logoutSubmit()">
+                        <span class="material-symbols-sharp">logout</span>
+                        <h3>Log Out</h3>
+                    </a>
+                </div>
+            </aside>
+
+        <table class="table table-striped">
+            <tr>  
+                <th >Name</th>
+                <th >Type of Work </th>
+                <th >Job Type</th>
+                <th >Expected Finish Day</th>
+                <th >Starting Date</th>
+                <th >Unit Area</th>
+                <th >Location</th>
+                <th >Decision</th>
+            </tr>
+                <tbody>
+                {{#each list}}
+                    <tr align="center">      
+                        <td>{{this.name}}</td>
+                        <td>{{this.TypeOfWork}}</td>
+                        <td>{{this.TypeOfJob}}</td>
+                        <td>{{this.ExpectedFinishDate}}</td>
+                        <td>{{this.StartingDate}}</td>
+                        <td>{{this.Area}}{{this.Unit}}</td>
+                        <td>{{this.Location}} </td>
+                        <td>
+                            <button class="button" data-modal-target="#modal">Review</button><br>
+                            <div class="modal" id="modal">
+                                <div class="modal-header">
+                                    <div class="title">Comment</div>
+                                    <button data-close-button class="close-button">&times;</button>
+                                </div>
+                                <div class="modal-body">    
+                                    <textarea id="review" type="text" name="Comment" placeholder="Write a reason for review"></textarea>
+                                    <button id="revButton"> Submit </button>
+                                </div>
+                            </div>
+                            <div id="overlay"></div>
+
+                            <button class="button" data-modal-target="#accept">Accept</button><br>
+                            <div class="modal" id="accept">
+                                <div class="modal-header">
+                                    <div class="title">Comment</div>
+                                    <button data-close-button class="close-button">&times;</button>
+                                </div>
+                                <div class="modal-body">    
+                                    <textarea id="accept" type="text" name="accept" placeholder="Write a reason for accepting"></textarea>
+                                    <button id="accButton"> Submit </button>
+                                </div>
+                            </div>
+                            <div id="overlay"></div>
+
+                            <button class="button" data-modal-target="#decline">Decline</button><br>
+                            <div class="modal" id="decline">
+                                <div class="modal-header">
+                                    <div class="title">Comment</div>
+                                    <button data-close-button class="close-button">&times;</button>
+                                </div>
+                                <div class="modal-body">    
+                                    <textarea id="decline" type="text" name="decline" placeholder="Write a reason for declining"></textarea>
+                                    <button id="decButton"> Submit </button>
+                                </div>
+                            </div>
+                            <div id="overlay"></div>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <script>  
+            const openModalButtons = document.querySelectorAll('[data-modal-target]')
+            const closeModalButtons = document.querySelectorAll('[data-close-button]')
+            const overlay = document.getElementById('overlay')
+
+            var revButton = document.getElementById("revButton")
+
+            function saveRev(review){
+                const id = this.id
+                const jobNum = this.jobNum
+                fetch("/save-review", {
+                    method: "POST",
+                    headers:{
+                        "Content-Type": "application/json",
+                    }, body: JSON.stringify({ review:review, id:id, jobNum:jobNum }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.exists){
+                        return false
+                    }
+                })
+                .catch(error => console.error(error))
+            }
+
+            revButton.onclick = function(){
+                const review = document.getElementById("review").value
+                saveRev(review)
+            }
+            
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = document.querySelector(button.dataset.modalTarget)
+                    openModal(modal)
+                })
+            })
+            
+            overlay.addEventListener('click', () => {
+                const modals = document.querySelectorAll('.modal.active')
+                modals.forEach(modal => {
+                    closeModal(modal)
+                })
+            })
+            
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal')
+                    closeModal(modal)
+                })
+            })
+            
+            function openModal(modal){
+                if(modal == null) return
+                modal.classList.add('active')
+                overlay.classList.add('active')
+            }
+            
+            function closeModal(modal){
+                if(modal == null) return
+                modal.classList.remove('active')
+                overlay.classList.remove('active')
+            }
+
+            $("#revButton").click(function() {
+  // Get the comment text from the textarea
+  var comment = $("#review").val();
+
+  // Send an AJAX request to the server to save the comment
+  $.ajax({
+    type: "POST",
+    url: "/saveComment",
+    data: { comment: comment },
+    success: function(data) {
+      // If the comment was saved successfully, hide the modal
+      $("#modal").hide();
+      $("#overlay").hide();
+    },
+    error: function() {
+      // If there was an error, display an error message
+      alert("There was an error saving your comment.");
+    }
+  });
+});
+
+        </script>
+    </body>
+</html>

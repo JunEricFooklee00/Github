@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+
+body{
+  background: #fdfeff;
+}
+
+
+nav{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  background: #021c4b;
+  width: 40px;
+  overflow: hidden;
+  transition: width 0.2s linear;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0);
+}
+
+.logo{
+  padding-left: 0%;
+  text-align: center;
+  display: flex;
+  transition: all 0.5s ease; 
+}
+
+.logo img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.logo span{
+  font-weight: bold;
+  padding-top: 5%;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+a{
+  position: relative;
+  color: rgb(238, 238, 238);
+  font-size: 14px;
+  display: table;
+  width: 300px;
+  padding: 10px;
+}
+
+.fa{
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 14px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.nav-item{
+  position: relative;
+  margin-left: 20px;
+}
+
+a:hover{
+  background:#0397ed;
+}
+
+nav:hover{
+  width: 280px;
+  transition: all 0.5s ease;
+}
+
+.logout{
+  position: absolute;
+  bottom: 0;
+}
+
+body{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4070f4;
+}
+
+.container{
+position: relative;
+max-width: 400px;
+width: 100%;
+border-radius: 6px;
+padding: 30px;
+margin: 0 15px;
+background-color: #fff;
+box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.container header{
+position: relative;
+font-size: 20px;
+font-weight: 600;
+color: #333;
+}
+
+.container header::before{
+content: "";
+position: absolute;
+left: 0;
+bottom: -2px;
+height: 3px;
+width: 27px;
+border-radius: 8px;
+background-color: #4070f4;
+}
+
+.container form{
+position: relative;
+margin-top: 16px;
+min-height: 490px;
+background-color: #fff;
+overflow: hidden;
+}
+
+.container form .form{
+position: absolute;
+background-color: #fff;
+transition: 0.3s ease;
+}
+
+.container form .details-personal{
+margin-top: 10px;
+}
+
+.container form .title{
+font-size: 16px;
+font-weight: 500;
+margin: 6px 0;
+color: #333;
+}
+
+.submit{
+  position: absolute;
+  bottom: 0;
+  
+}

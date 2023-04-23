@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notification System</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <script>
+    // Connect to the server
+    const socket = io();
+
+    // Handle new notifications received from the server
+    socket.on('new-notification', (notification) => {
+      console.log('New notification received:', notification);
+      // Display the notification to the user
+
+    });
+
+    // Emit a new notification to the server
+    function sendNotification() {
+      const notification = { message: 'New notification!' };
+      socket.emit('new-notification', notification);
+    }
+    socket.emit()
+  </script>
+</head>
+<body>
+  <h1>Notification System</h1>
+  <button onclick="sendNotification()">Send notification</button>
+</body>
+</html>

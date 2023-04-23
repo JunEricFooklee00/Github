@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta charset="utf-8">
+        <title>EMS</title>
+        {{!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> --}}
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="../CSS/portalpage.css">
+    </head>
+
+    <body>
+
+          <div class="container-md"> 
+            <div class = "header">
+            <nav>
+                <h1>Employee Management System</h1>
+                <div class="menu">
+                    <ul><li>
+                        <a href="#home">Home</a>
+                        <a href="#careers">Careers</a>
+                        <a href="#service">Service</a>
+                        <a href="#aboutus">AboutUs</a>
+                    </li></ul>
+                </div>
+                <div class="todo">
+                    <ul><li>
+                        <button class="button" data-modal-target="#login">Log In</button>
+                        <a href="/signuppage"><button class="button" id="href">Signup</button></a>
+                    </li></ul>
+                </div>
+
+                <div class="modal" id="login">
+                    <div class="modal-header">
+                        <div class="title">Log In</div>
+                        <button data-close-button class="close-button">&times;</button>
+                    </div>
+                        
+                    <div class="modal-body">
+                        <form onsubmit="submitForm(event)">
+                            <input type="text" id="input" name="name" placeholder="Username/Email" value="">
+                            <input type="password" id="input" name="password" placeholder="Password" value="">
+                            <div id="error" class="text-danger"></div>
+                            <input type="submit" id="submit" value="Log In">
+                        </form>
+                    </div>
+                </div>
+                <div id="overlay"></div>
+            </nav>
+            {{!-- <div class="w3-container w3-center">
+                <h1>Your home is secured</h1>
+
+            </div> --}}
+
+        <script src="/JS/portalpage.js"></script>
+    </body>
+</html>
